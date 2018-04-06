@@ -1,0 +1,1 @@
+liquibase --driver=org.h2.Driver --changeLogFile=test-db-changelog-master.xml --url="jdbc:h2:tcp://localhost/./testabc" --username=test --password="" update

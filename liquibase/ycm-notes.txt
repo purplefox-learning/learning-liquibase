@@ -1,0 +1,27 @@
+All these Files can be found at C:\a\liquibase-3.5.3-bin
+
+Firstly copy the right version of H2 jar (in my case h2-1.4.193.jar) to the lib folder of liquibase/lib folder (in my case C:\a\liquibase-3.5.3-bin\lib)
+
+Run this command
+C:\a\liquibase-3.5.3-bin>liquibase --driver=org.h2.Driver --changeLogFile=test-db-changelog-master.xml --url="jdbc:h2:tcp://localhost/./testabc" --username=test --password="" update
+Or simply run run-liquibase-for-test-db.bat
+Note that the testabc database can be found in the folder where the h2 instance is started (i.e. C:\a\h2\bin since I run “Start Local H2 Server.bat” at C:\a\h2 )
+
+Visit http://localhost:8082/
+The url is jdbc:h2:tcp://localhost/./testabc, username is test, password is empty (if it doesnot work, try test or password)
+We should see a new table “EDMI_PROVIDER” is created in this new database
+
+The attached Liquibase.scala is another good sample to demonstrate
+•	How Liquibase is used/called
+•	How file parsing is done in scala
+
+
+
+========== BELOW is the OLD NOTE ==========
+
+<< For H2 on Catalog >>
+liquibase –driver=org.h2.Driver --changeLog=Filedb-changelog-master.xml --url=jdbc:h2:tcp://localhost/./work/catalog --username=test --password=test update
+liquibase … … rollbackToDate SomeDateHere
+
+<< For MySQL >>
+liquibase --driver=com.mysql.jdbc.Driver --classpath=/path/to/classes --changeLogFile=com/example/db.changelog.xml --url="jdbc:mysql://localhost/example" --username=user --password=asdf migrate
